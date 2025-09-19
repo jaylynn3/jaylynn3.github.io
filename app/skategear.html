@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=Eater&family=Lexend:wght@500&family=Nosifer&family=Protest+Revolution&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e6e6fa;
+      }
+
+      /* Top Bar Styling */
+      .top-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #daf7a6;
+        padding: 10px 20px;
+        font-size: 14px;
+        color: black;
+      }
+
+      .top-bar .center-text {
+        font-weight: bold;
+        font-size: 20px;
+        color: black;
+      }
+
+      /* Logo and Search Section */
+      .logo-search-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: black;
+        color: white;
+      }
+
+      .logo a {
+        font-family: Nosifer, serif;
+        font-size: 24px;
+        text-decoration: none;
+        color: #00ff7f;
+      }
+
+      .search-bar {
+        display: flex;
+        flex-grow: 1;
+        margin: 0 20px;
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .search-bar button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+      }
+
+      .search-bar button:hover {
+        background-color: #0056b3;
+      }
+
+      .icon-links a {
+        margin-left: 15px;
+        color: #00ff7f;
+        text-decoration: none;
+        font-size: 20px;
+      }
+
+      .icon-links a:hover {
+        color: #007bff;
+      }
+
+      /* Navigation Styling */
+nav {
+  display: flex;
+  justify-content: center; /* Centers the nav items horizontally */
+  align-items: center;
+  background-color: black;
+  padding: 10px 30px; /* Padding for better spacing */
+  width: 100%; /* Ensures navbar takes up the full width of the screen */
+}
+
+/* For the hamburger menu (on mobile) */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* For the nav links container */
+.nav-links {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly; /* Even spacing between items on large screens */
+  width: 100%; /* Ensures it spans the full width */
+}
+
+/* Spacing for individual list items in nav */
+.nav-links li {
+  margin: 0 15px; /* Adjusted margin for smaller space between items */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ff7f;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding-top: 60px; /* Adds space at the top for better visibility */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 20px 0; /* Adds vertical space between links on mobile */
+  }
+}
+
+      
+      
+      #timer {
+        margin-left: 20px; /* Adds space between the "Free Shipping" and the timer */
+      }
+
+          
+      /* FOOTER SECTION */
+      footer {
+        padding: 20px;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      .footer-top {
+        display: flex;
+        justify-content: center; /* Center the footer-about section horizontally */
+        align-items: center;
+        text-align: center; /* Center the content inside the footer-about */
+      }
+
+      .footer-about {
+        display: inline-block;
+        text-align: center; /* Center the text horizontally */
+        margin-right: 20px; /* Space between "About Us" and the line */
+      }
+
+      .footer-about p,
+      .footer-about a {
+        font-size: 14px;
+        margin: 0;
+        color: white;
+      }
+
+      .footer-about a {
+        text-decoration: underline;
+        color: #f4d03f;
+      }
+
+      .footer-signup {
+        margin-top: 20px; /* Space after the line */
+        text-align: center; /* Center the text horizontally */
+        margin-right: 20px; /* Space between "About Us" and the line */
+      }
+
+      .footer-signup h3 {
+        font-size: 18px;
+        color: white;
+      }
+
+      .footer-signup a {
+        color: #f4d03f;
+        text-decoration: underline;
+      }
+
+      .footer-line {
+        border: none;
+        border-top: 1px solid #f4d03f;
+        margin-top: 20px; /* Adds space above the line */
+        margin-bottom: 20px; /* Adds space below the line */
+      }
+
+      .footer-socials {
+        display: flex;
+        justify-content: center; /* Center the items horizontally */
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .footer-socials a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+      }
+
+      .footer-socials i {
+        font-size: 22px;
+        margin-right: 8px;
+      }
+
+      .footer-socials span {
+        font-size: 18px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .footer-links div {
+        margin-right: 20px;
+      }
+
+      /*BANNER*/
+
+      .black-banner {
+        width: 100%;
+        height: 50px; /* Adjust the default height of the banner */
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 70px; /* Adds space at the top of the banner */
+        padding-bottom: 30px; /* Adds space at the bottom of the banner */
+      }
+
+      .black-banner img {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensures the image covers the banner without distortion */
+        padding-top: 10px; /* Adds top padding directly to the image */
+        padding-bottom: 10px; /* Adds bottom padding directly to the image */
+      }
+
+      /* Media Queries for responsiveness */
+      @media (max-width: 768px) {
+        .black-banner {
+          height: 40px;
+          padding-top: 8px; /* Adjust top padding for smaller screens */
+          padding-bottom: 8px; /* Adjust bottom padding for smaller screens */
+        }
+
+        .black-banner img {
+          object-fit: contain;
+          padding-top: 5px; /* Adjust padding for top on smaller screens */
+          padding-bottom: 5px; /* Adjust padding for bottom on smaller screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .black-banner {
+          height: 30px;
+          padding-top: 5px; /* Further adjust padding for very small screens */
+          padding-bottom: 5px; /* Further adjust bottom padding */
+        }
+
+        .black-banner img {
+          object-fit: contain;
+          padding-top: 3px; /* Adjust padding for very small screens */
+          padding-bottom: 3px; /* Adjust padding for very small screens */
+        }
+      }
+
+      /* Photo Row Container */
+      .photo-row {
+        display: flex; /* Display images in a row */
+        justify-content: center; /* Center images horizontally */
+        gap: 16px; /* Add some space between the images */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        padding: 10px;
+      }
+      /* Style for Images */
+      .photo-row img {
+        width: 100%; /* Make images responsive to the container */
+        max-width: 300px; /* Set a maximum width for images */
+        height: auto; /* Keep aspect ratio of images */
+        border-radius: 8px; /* Optional: Adds rounded corners to images */
+        transition: transform 0.3s ease; /* Adds smooth transition for hover effect */
+      }
+
+      /* Hover Effect for Images */
+      .photo-row img:hover {
+        transform: scale(1.05); /* Slightly enlarge image on hover */
+      }
+
+      h1 {
+        text-align: center; /* Center-align the header */
+        font-size: 2.5em; /* Set the font size */
+        color: black; /* Set text color */
+        margin: 20px 0; /* Add spacing around the header */
+        font-weight: bold; /* Make the text bold */
+        text-transform: uppercase; /* Optional: make the header text uppercase */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="center-text">Free Shipping on Orders Over $50!</div>
+      <div id="timer" class="center-text"></div>
+    </div>
+
+    <!-- Logo and Search Section -->
+    <div class="logo-search-bar">
+      <div class="logo">
+        <a href="#">NOMAD SKATE CO</a>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for products..." />
+        <button>Search</button>
+      </div>
+      <div class="icon-links">
+        <a href="#"><i class="fas fa-heart"></i></a>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <!-- Navigation Links -->
+<nav class="navigation">
+  <button class="hamburger" aria-label="Toggle Navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <ul class="nav-links">
+    <li><a href="https://messy-elfin-sociology.glitch.me/#" target="_blank">Home</a></li>
+    <li><a href="skateboards.html">Skate Boards</a></li>
+    <li><a href="skategear.html" >Skate Gear</a></li>
+    <li><a href="workshop.html" >Workshops</a></li>
+  <li><a href="contactus.html">Contact Us/Help</a></li> <!-- Open in a new tab -->
+    <li><a href="myaccount.html" >My Account</a></li> <!-- Open in a new tab -->
+     
+    <li><a href="sale.html" >Sale</a></li> <!-- Open in a new tab -->
+    
+  </ul>
+</nav>
+
+    <!-- New Section -->
+    <div class="new-section">
+      <h1>SKATE GEAR</h1>
+
+      <!-- Photo Row -->
+      <div class="photo-row">
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.43.53%E2%80%AFAM.png?v=1733211931725"
+          alt="Product 1"
+        />
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.43.36%E2%80%AFAM.png?v=1733211903368"
+          alt="Product 2"
+        />
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.43.41%E2%80%AFAM.png?v=1733211917381"
+          alt="Product 3"
+        />
+
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.42.03%E2%80%AFAM.png?v=1733211750895"
+          alt="Product 4"
+        />
+
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.41.45%E2%80%AFAM.png?v=1733211753787"
+          alt="Product 5"
+        />
+
+        <img
+          src="https://cdn.glitch.global/3409bea6-d5e1-4c7f-a40b-28918c481639/Screenshot%202024-12-03%20at%202.41.34%E2%80%AFAM.png?v=1733211757713"
+          alt="Product 5"
+        />
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-about">
+            <p>About Us</p>
+            <a
+              href="https://docs.google.com/document/d/1gK5og0YQCEv-tnJh2PjjIIpx7ME0ls0vxtamthW7ycM/edit?usp=sharing"
+              >See More</a
+            >
+          </div>
+        </div>
+        <hr class="footer-line" />
+        <!-- Line separating About Us and Sign Up -->
+        <div class="footer-signup">
+          <h3>Sign Up to Earn Rewards + Special Offers</h3>
+          <form action="/subscribe" method="POST" class="signup-form">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              aria-label="Email"
+              required
+            />
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-socials">
+        <!-- Instagram Icon -->
+        <a
+          href="https://www.instagram.com/nomadskateboards/"
+          target="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+
+        <!-- TikTok Icon -->
+        <a
+          href="https://www.tiktok.com/@therealskatenomad?is_from_webapp=1&sender_device=pc"
+          target="Tictok"
+        >
+          <i class="fab fa-tiktok"></i>
+
+          <span>TikTok</span>
+        </a>
+      </div>
+
+      <div class="footer-links">
+        <div class="help">
+          <h4>Help</h4>
+          <ul>
+            <li>
+              <a
+                href="https://www.fedex.com/en-us/shipping/one-rate.html?CMP=KNC-1008130-1-17-950-1110000-US-US-EN-123650:2401031:2401050&gad_source=1&gclid=Cj0KCQiAr7C6BhDRARIsAOUKifhyQbK9xS0aNcR1HXnVef_4mnlLW3kRW62bUF550kxlwjM5T_BSbwUaAqytEALw_wcB&gclsrc=aw.ds"
+                >Order Status</a
+              >
+            </li>
+            <li><a href="#">Start A Return or Exchange</a></li>
+            <li><a href="#">Returns + Exchanges</a></li>
+            <li>
+              <a
+                href="https://www.fedex.com/en-us/shipping/one-rate.html?CMP=KNC-1008130-1-17-950-1110000-US-US-EN-123650:2401031:2401050&gad_source=1&gclid=Cj0KCQiAr7C6BhDRARIsAOUKifhyQbK9xS0aNcR1HXnVef_4mnlLW3kRW62bUF550kxlwjM5T_BSbwUaAqytEALw_wcB&gclsrc=aw.ds"
+                >Shipping</a
+              >
+            </li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a
+                href="https://shopnomadsupply.com/products/nomad-supply-company-gift-card"
+                >Gift Cards</a
+              >
+            </li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="extras">
+          <h4>Extras</h4>
+          <ul>
+            <li><a href="https://www.afterpay.com/en-US">Afterpay</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <div class="black-banner">
+      <img
+        src="https://cdn.glitch.global/7f405b20-69bd-486c-a0c6-5f4c7b70461d/Orange%20%26%20Purple%20Geometric%20Tehnology%20Linkdln%20Banner.png?v=1733098707392"
+        alt="Banner"
+      />
+    </div>
+
+    <!-- Timer Script -->
+    <script>
+      const targetDate = new Date().getTime() + 3600000; // 1 hour from now
+      const timerElement = document.getElementById("timer");
+
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          timerElement.innerHTML = "Expired";
+          clearInterval(timerInterval);
+        } else {
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      timerElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+
+        }
+      }
+
+      const timerInterval = setInterval(updateTimer, 1000);
+
+      // Hamburger Menu Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
